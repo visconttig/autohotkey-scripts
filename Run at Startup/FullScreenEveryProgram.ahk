@@ -6,22 +6,9 @@ GroupAdd, programs, ahk_exe Anki.exe
 
 ;================================================
 ; COPY SCRIPT TO StartUp FOLDER FOR AUTORUNNING
-;put this line near the top of your script: "Menu, tray, add, Auto Start, startwithwindows?"
-;kStartWithWindows?:
-;   MsgBox, 4,, Would you like this program to start with Windows? (press Yes or No)
-;    IfMsgBox Yes
-;   {
-    FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% ;create one
-    ;   MsgBox,,%title%, You pressed Yes`n`nWill start automatically,1
-    ;   } ;     MsgBox You pressed Yes.
-    ;    else
-    ;   {
-    ;      Filedelete, %A_Startup%\%A_ScriptName%.lnk
-    ;     MsgBox,,Actioned, You pressed No.`nThis program will not start ;; ;automatically,1
-    ;  }
-    ;Return
-    
-    ; --------------
+;put this line near the top of your script: 
+FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% 
+;=============================================
 
 
 #SingleInstance Force
@@ -52,8 +39,10 @@ inMargin := y < margin || y > A_ScreenHeight - margin
 Send % !full && A_TimeIdleMouse > idle || full && inMargin && moved ? "{F11}" : ""
 ;Return
 
-; Toggle Pause with F2
+; Toggle Pause with F11 or F2
 ~F11::Pause, Toggle
+return
 ~F2::Pause, Toggle
+return
 
 

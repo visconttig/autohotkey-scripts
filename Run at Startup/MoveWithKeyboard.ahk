@@ -1,23 +1,11 @@
 #Persistent
 #SingleInstance
+
 ;================================================
 ; COPY SCRIPT TO StartUp FOLDER FOR AUTORUNNING
-;put this line near the top of your script: "Menu, tray, add, Auto Start, startwithwindows?"
-;kStartWithWindows?:
-;   MsgBox, 4,, Would you like this program to start with Windows? (press Yes or No)
-;    IfMsgBox Yes
-;   {
-FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% ;create one
-;   MsgBox,,%title%, You pressed Yes`n`nWill start automatically,1
-;   } ;     MsgBox You pressed Yes.
-;    else
-;   {
-;      Filedelete, %A_Startup%\%A_ScriptName%.lnk
-;     MsgBox,,Actioned, You pressed No.`nThis program will not start ;; ;automatically,1
-;  }
-;Return
-
-; --------------
+;put this line near the top of your script: 
+FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% 
+;=============================================
 
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
@@ -76,7 +64,7 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
 ::cdt::cd "C:\Users\visco\OneDrive\Desktop\html-projects"
 
-; TEST Run Everything search program
+; Run Everything search program
 ^!e:: ; CTRL+ALT+E
     Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Everything.lnk
 ^!f:: ; CTRL+ALT+F ---> This is being used by RainDrop !!

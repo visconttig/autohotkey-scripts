@@ -13,22 +13,9 @@
 
 ;================================================
 ; COPY SCRIPT TO StartUp FOLDER FOR AUTORUNNING
-;put this line near the top of your script: "Menu, tray, add, Auto Start, startwithwindows?"
-;kStartWithWindows?:
-;   MsgBox, 4,, Would you like this program to start with Windows? (press Yes or No)
-;    IfMsgBox Yes
-;   {
-    FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% ;create one
-    ;   MsgBox,,%title%, You pressed Yes`n`nWill start automatically,1
-    ;   } ;     MsgBox You pressed Yes.
-    ;    else
-    ;   {
-    ;      Filedelete, %A_Startup%\%A_ScriptName%.lnk
-    ;     MsgBox,,Actioned, You pressed No.`nThis program will not start ;; ;automatically,1
-    ;  }
-    ;Return
-    
-    ; --------------
+;put this line near the top of your script: 
+    FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% 
+;=============================================
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
@@ -194,63 +181,63 @@ Return ; }}}
         resetInputNumber()
         return
     }
-    ; x::
-    ; {
-    ;     lastCommand = {Delete %inputNumber%}
-    ;     SendInput, %lastCommand%
-    ;     resetInputNumber()
-    ;     return
-    ; }
-    ; >::
-    ; {
-    ;     lastCommand = {ShiftDown}{LeftArrow}{LeftArrow}{RightArrow}{ShiftUp}{Tab}{Esc}
-    ;     SendInput, %lastCommand%
-    ;     resetInputNumber()
-    ;     return
-    ; }
-    ; <::
-    ; {
-    ;     lastCommand = {ShiftDown}{LeftArrow}{LeftArrow}{RightArrow}{ShiftUp}{ShiftDown}{Tab}{ShiftUp}{Esc}
-    ;     SendInput, %lastCommand%
-    ;     resetInputNumber()
-    ;     return
-    ; }
-    ; 0:: ; Add to the inputNumber if inputNumber != null, otherwise HOME
-    ; {
-    ;     if (inputNumber != " ")
-    ;     {
-    ;         inputNumber = %inputNumber%0
-    ;         normalize(0)
-    ;         notify(inputNumber)
-    ;         return
-    ;     }
-    ;     else
-    ;     {
-    ;         SendInput {Home}
-    ;         resetInputNumber()
-    ;         return
-    ;     }
-    ; }
-    ; -::
-    ; {
-    ;     SendInput {End}
-    ;     resetInputNumber()
-    ;     return
-    ; }
-    ; $::
-    ; {
-    ;     SendInput {End}
-    ;     resetInputNumber()
-    ;     return
-    ; }
+    x::
+    {
+        lastCommand = {Delete %inputNumber%}
+        SendInput, %lastCommand%
+        resetInputNumber()
+        return
+    }
+    >::
+    {
+        lastCommand = {ShiftDown}{LeftArrow}{LeftArrow}{RightArrow}{ShiftUp}{Tab}{Esc}
+        SendInput, %lastCommand%
+        resetInputNumber()
+        return
+    }
+    <::
+    {
+        lastCommand = {ShiftDown}{LeftArrow}{LeftArrow}{RightArrow}{ShiftUp}{ShiftDown}{Tab}{ShiftUp}{Esc}
+        SendInput, %lastCommand%
+        resetInputNumber()
+        return
+    }
+    0:: ; Add to the inputNumber if inputNumber != null, otherwise HOME
+    {
+        if (inputNumber != " ")
+        {
+            inputNumber = %inputNumber%0
+            normalize(0)
+            notify(inputNumber)
+            return
+        }
+        else
+        {
+            SendInput {Home}
+            resetInputNumber()
+            return
+        }
+    }
+    -::
+    {
+        SendInput {End}
+        resetInputNumber()
+        return
+    }
+    $::
+    {
+        SendInput {End}
+        resetInputNumber()
+        return
+    }
 
-    ; ; repeat
-    ; .::
-    ; {
-    ;     SendInput, %lastCommand%
-    ;     resetInputNumber()
-    ;     return
-    ; }
+    ; repeat
+    .::
+    {
+        SendInput, %lastCommand%
+        resetInputNumber()
+        return
+    }
 
     ; selection movements with Shift
     +h::
@@ -309,155 +296,155 @@ Return ; }}}
         return
     }
 
-    ; ; Copy (Yank) / Cut (Delete) / Paste (Put)
-    ; y::
-    ; {
-    ;     SendInput ^c
-    ;     resetInputNumber()
-    ;     return
-    ; }
-    ; p::
-    ; {
-    ;     SendInput ^v
-    ;     resetInputNumber()
-    ;     return
-    ; }
-    ; d::
-    ; {
-    ;     lastCommand = ^x
-    ;     SendInput, %lastCommand%
-    ;     resetInputNumber()
-    ;     return
-    ; }
+    ; Copy (Yank) / Cut (Delete) / Paste (Put)
+    y::
+    {
+        SendInput ^c
+        resetInputNumber()
+        return
+    }
+    p::
+    {
+        SendInput ^v
+        resetInputNumber()
+        return
+    }
+    d::
+    {
+        lastCommand = ^x
+        SendInput, %lastCommand%
+        resetInputNumber()
+        return
+    }
 
-    ; ; Search with /
-    ; /::
-    ; {
-    ;     SendInput ^f
-    ;     resetInputNumber()
-    ;     return
-    ; }
+    ; Search with /
+    /::
+    {
+        SendInput ^f
+        resetInputNumber()
+        return
+    }
 
-    ; ; HotKey to VIM maps
-    ; u:: 
-    ; {
-    ;     SendInput ^z
-    ;     resetInputNumber()
-    ;     return
-    ; }
+    ; HotKey to VIM maps
+    u:: 
+    {
+        SendInput ^z
+        resetInputNumber()
+        return
+    }
 
-    ; ; Catch numbers to repeat commands
-    ; $1::
-    ; {
-    ;    inputNumber = %inputNumber%1
-    ;    normalize(1)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    ; Catch numbers to repeat commands
+    $1::
+    {
+       inputNumber = %inputNumber%1
+       normalize(1)
+       notify(inputNumber)
+       return
+    }
 
-    ; $2::
-    ; {
-    ;    inputNumber = %inputNumber%2
-    ;    normalize(2)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $2::
+    {
+       inputNumber = %inputNumber%2
+       normalize(2)
+       notify(inputNumber)
+       return
+    }
 
-    ; $3::
-    ; {
-    ;    inputNumber = %inputNumber%3
-    ;    normalize(3)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $3::
+    {
+       inputNumber = %inputNumber%3
+       normalize(3)
+       notify(inputNumber)
+       return
+    }
 
-    ; $4::
-    ; {
-    ;    inputNumber = %inputNumber%4
-    ;    normalize(4)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $4::
+    {
+       inputNumber = %inputNumber%4
+       normalize(4)
+       notify(inputNumber)
+       return
+    }
 
-    ; $5::
-    ; {
-    ;    inputNumber = %inputNumber%5
-    ;    normalize(5)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $5::
+    {
+       inputNumber = %inputNumber%5
+       normalize(5)
+       notify(inputNumber)
+       return
+    }
 
-    ; $6::
-    ; {
-    ;    inputNumber = %inputNumber%6
-    ;    normalize(6)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $6::
+    {
+       inputNumber = %inputNumber%6
+       normalize(6)
+       notify(inputNumber)
+       return
+    }
 
-    ; $7::
-    ; {
-    ;    inputNumber = %inputNumber%7
-    ;    normalize(7)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $7::
+    {
+       inputNumber = %inputNumber%7
+       normalize(7)
+       notify(inputNumber)
+       return
+    }
 
-    ; $8::
-    ; {
-    ;    inputNumber = %inputNumber%8
-    ;    normalize(8)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $8::
+    {
+       inputNumber = %inputNumber%8
+       normalize(8)
+       notify(inputNumber)
+       return
+    }
 
-    ; $9::
-    ; {
-    ;    inputNumber = %inputNumber%9
-    ;    normalize(9)
-    ;    notify(inputNumber)
-    ;    return
-    ; }
+    $9::
+    {
+       inputNumber = %inputNumber%9
+       normalize(9)
+       notify(inputNumber)
+       return
+    }
         
 #IfWinExist ;}}}
 
-;;; Ad-hoc Vi navigation with Space + key combo {{{
+;; Ad-hoc Vi navigation with Space + key combo {{{
 
-; Space & F1::Return
-; ; send explicitly when no other key is pressed before release
-; *Space:: SendInput {Blind}{Space}
-;  KeyDown:=A_TickCount
-;  KeyWait /
-;  if (A_TickCount-KeyDown < 1000)
-;     Send {Space}
-;  Return
+Space & F1::Return
+; send explicitly when no other key is pressed before release
+*Space:: SendInput {Blind}{Space}
+ KeyDown:=A_TickCount
+ KeyWait /
+ if (A_TickCount-KeyDown < 1000)
+    Send {Space}
+ Return
 
-; #If GetKeyState("Space", "p")
+#If GetKeyState("Space", "p")
 
-; ; cursor movements
-;  h::left 
-;  j::down 
-;  k::up 
-;  l::right 
+; cursor movements
+ h::left 
+ j::down 
+ k::up 
+ l::right 
 
-; ; page movements
-;  w::^right
-;  b::^left
-;  x::delete
-;  0::home
-;  -::end
-;  $::end
+; page movements
+ w::^right
+ b::^left
+ x::delete
+ 0::home
+ -::end
+ $::end
 
 
-; ; HotKey to VIM maps
-;  u:: SendInput ^z
+; HotKey to VIM maps
+ u:: SendInput ^z
 
-; ; Change file name
-;  i:: SendInput {F2}
+; Change file name
+ i:: SendInput {F2}
 
-; #If
+#If
 
-; }}}
+;}}}
 
 ; Validate the inputNumber and make sure that it's less than 500 {{{
 normalize(resetNumber)

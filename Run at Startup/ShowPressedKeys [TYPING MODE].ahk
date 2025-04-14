@@ -16,12 +16,8 @@
 Suspend ; Start the script suspended
 
 
-;#IfWinNotActive ahk_exe Code.exe
 #IfWinNotActive ahk_exe idea64.exe
-	; --------------------------------
 
-
-; -------------------
 ;------------------------------------
 ;
 ; Change log file:

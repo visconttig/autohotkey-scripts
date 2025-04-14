@@ -7,39 +7,17 @@ GroupAdd, programming_tools, ahk_pid 4784 ; vscode
 #SingleInstance
 #Persistent
 #IfWinNotActive ahk_group programming_tools
-;#If !WinActive("ahk_group programming_tools")
-;#If Not WinActive("ahk_group programming_tools")
 
 
-
-
-
-; RESET SETTINGS
+; Force a Settings reset
 Gui, Destroy
 
 ;Suspend ; Start the script suspended
 
-;#IfWinNotActive ahk_exe Code.exe
-;#IfWinNotActive ahk_exe idea64.exe
-
 ;================================================
 ; COPY SCRIPT TO StartUp FOLDER FOR AUTORUNNING
-;put this line near the top of your script: "Menu, tray, add, Auto Start, startwithwindows?"
-;kStartWithWindows?:
-;   MsgBox, 4,, Would you like this program to start with Windows? (press Yes or No)
-;    IfMsgBox Yes
-;   {
-    FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% ;create one
-    ;   MsgBox,,%title%, You pressed Yes`n`nWill start automatically,1
-    ;   } ;     MsgBox You pressed Yes.
-    ;    else
-    ;   {
-    ;      Filedelete, %A_Startup%\%A_ScriptName%.lnk
-    ;     MsgBox,,Actioned, You pressed No.`nThis program will not start ;; ;automatically,1
-    ;  }
-    ;Return
-    
-    ; --------------
+;put this line near the top of your script:
+    FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_ScriptDir% 
 ;=============================================
 
 	
@@ -842,11 +820,6 @@ Gui, Destroy
 	}
 	
 
-;#IfWinNotActive ahk_exe Code.exe
 F1::
 Suspend, Toggle
 return
-
-;#IfWinNotActive
-;#If !WinActive
-;#If Not WinActive
