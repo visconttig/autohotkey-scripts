@@ -14,7 +14,7 @@ FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_Scrip
 #SingleInstance Force
 #InstallMouseHook
 Process, Priority,, B
-idle      = 3000 ; Milliseconds to wait before entering full screen
+idle      = 1000 ; Milliseconds to wait before entering full screen
 margin    = 10 ;140  ; Screen boundaries for exiting full screen
 tolerance = 4    ; Mouse distance to ignore in full screen
 Loop {

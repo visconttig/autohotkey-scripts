@@ -9,7 +9,6 @@ FileCreateShortcut, %A_ScriptFullPath%, %A_Startup%\%A_ScriptName%.lnk, %A_Scrip
 
 ChangeBrightness(100)
 Sleep, 100
-;ChangeBrightness(50)
 ChangeBrightness(0)
 Sleep, 100
 return
